@@ -12,3 +12,4 @@ We use ESP32-cam and OpenCv to drive a car through a lane
 - make a loop on a FTDI programmer btn middle pin and 5v(depending on where you connect esp32 cam, for now we connect on 5V)
 - Make a loop on ESP32 cam btn IO0 and Gnd
 - When you connect from FTDI to ESP32 use 5v and Gnd which are close together
+- You can also try to reset the ESP32 Cam
