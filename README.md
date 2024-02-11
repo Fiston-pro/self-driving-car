@@ -1,4 +1,4 @@
-# Self Driving Car
+0# Self Driving Car
 We use ESP32-cam and OpenCv to drive a car through a lane
 
 ## GET STARTED
@@ -14,3 +14,8 @@ We use ESP32-cam and OpenCv to drive a car through a lane
 - Make a loop on ESP32 cam btn IO0 and Gnd
 - When you connect from FTDI to ESP32 use 5v and Gnd which are close together
 - You can also try to reset the ESP32 Cam
+
+### Requirements
+- L9110S H-bridge Dual DC Stepper Motor Driver Controller Board
+- Car chassis
+- ESP32 CAM
