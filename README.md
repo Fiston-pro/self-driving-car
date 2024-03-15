@@ -19,3 +19,7 @@ We use ESP32-cam and OpenCv to drive a car through a lane
 - L9110S H-bridge Dual DC Stepper Motor Driver Controller Board
 - Car chassis
 - ESP32 CAM
+
+### Limitations
+- I tried to use 4 wheels to increase torque and the electricity was getting low and making stuff misbehave so i just stuck on 2 wheels and it was working fine
+
