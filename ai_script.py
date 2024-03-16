@@ -57,22 +57,12 @@ def detect_lanes(frame):
     
     return result
 
-# Main function to capture frames and detect lanes
+# Main function to capture frames from the ESP32-CAM stream and detect lanes
 def main():
     # URL of the ESP32-CAM stream
     stream_url = 'http://192.168.19.229:81/stream'
     
-    # Open the video capture
-    cap = cv2.VideoCapture(0)
-    
-    while True:
-        # Read a frame from the video capture
-        ret, frame = cap.read()
-        
-        # Check if the frame was successfully read
-        if not ret:
-            break
-        
+    for frame in get_stream_frame(stream_url):
         # Detect and track lanes
         result = detect_lanes(frame)
         
@@ -83,8 +73,7 @@ def main():
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     
-    # Release the video capture and close all windows
-    cap.release()
+    # Close all windows
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
