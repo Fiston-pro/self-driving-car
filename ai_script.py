@@ -60,7 +60,7 @@ def detect_lanes(frame):
 # Function to calculate steering based on lane positions
 def calculate_steering(frame_center, lane_centers, width):
     if len(lane_centers) == 0:
-        return "straight"  # No lanes detected, maintain current direction
+        return "stop"  # No lanes detected, stop the car
     
     # Calculate the average lane center
     avg_lane_center = sum(lane_centers) / len(lane_centers)
@@ -79,13 +79,33 @@ def calculate_steering(frame_center, lane_centers, width):
 # Main function to capture frames from the ESP32-CAM stream, detect lanes, and control the car
 def main():
     # URL of the ESP32-CAM stream
-    stream_url = 'http://<ESP32_CAM_IP_ADDRESS>:81/stream'
+    stream_url = 'http://192.168.19.229:81/stream'
     
     # Define the width of the frame
     frame_width = 640
     
     # Initialize the previous steering direction
-    prev_steering = "straight"
+    prev_steering = "stop"
+    
+    # Define the mapping of button commands to steering directions
+    button_commands = {
+        "forward": "straight",
+        "backward": "straight",
+        "left": "left",
+        "right": "right",
+        "stop": "stop"
+    }
+    
+    # Function to send control commands to the ESP32-CAM API
+    def send_control_command(direction):
+        # Send control command to the ESP32-CAM API
+        api_endpoint = "/action?go=" + direction
+        api_url = "http://192.168.19.229:80" + api_endpoint
+        response = requests.get(api_url)
+        if response.status_code == 200:
+            print("Control command sent successfully:", direction)
+        else:
+            print("Failed to send control command:", direction)
     
     for frame in get_stream_frame(stream_url):
         # Detect and track lanes
@@ -107,16 +127,8 @@ def main():
         
         # Control the car based on the steering direction
         if steering != prev_steering:
-            # Send control commands to the ESP32-CAM API
-            if steering == "left":
-                print("Turning left")
-                # Send API endpoint to turn left
-            elif steering == "right":
-                print("Turning right")
-                # Send API endpoint to turn right
-            else:
-                print("Going straight")
-                # Send API endpoint to maintain current direction
+            # Send control command to the ESP32-CAM API
+            send_control_command(button_commands[steering])
             
             # Update the previous steering direction
             prev_steering = steering
