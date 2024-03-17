@@ -1,4 +1,4 @@
-0# Self Driving Car
+# Self Driving Car
 We use ESP32-cam and OpenCv to drive a car through a lane
 
 ## GET STARTED
