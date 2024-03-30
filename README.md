@@ -1,7 +1,7 @@
 # Self Driving Car
 We use ESP32-cam and OpenCv to drive a car through a lane
 
-![car image on my laps in my room](https://github.com/Fiston-pro/self-driving-car/blob/car.jpg)
+![car image on my laps in my room]([https://github.com/Fiston-pro/self-driving-car/blob/car.jpg](https://github.com/Fiston-pro/self-driving-car/blob/main/blob/car.jpg))
 
 ## GET STARTED
 
