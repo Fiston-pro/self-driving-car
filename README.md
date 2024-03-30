@@ -1,6 +1,8 @@
 # Self Driving Car
 We use ESP32-cam and OpenCv to drive a car through a lane
 
+![car image on my laps in my room](https://github.com/Fiston-pro/self-driving-car/blob/car.jpg)
+
 ## GET STARTED
 
 - Start by connecting the esp32 cam correctly with FTDI programmer (Read for more: [here](https://randomnerdtutorials.com/program-upload-code-esp32-cam/))
